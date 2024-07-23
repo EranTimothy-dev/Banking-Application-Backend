@@ -13,11 +13,11 @@ public class AccountHolder {
         this.nic = nic;
     }
 
-    public void setName(String name){
-        if (isValidName(name)){
+    public void setName(String name) throws Exception{
+        if (isValidName(name)) {
             this.name = name;
         }
-        System.out.println("Invalid Name! Name not set.");
+        throw new Exception("Invalid name entered! name has characters that are not letters.");
     }
 
     public String getName(){
@@ -32,13 +32,12 @@ public class AccountHolder {
         return this.birthdate;
     }
 
-    public void setNic(String nic){
+    public void setNic(String nic) throws Exception{
         if (nic.length() == 10 || nic.length() == 12){
             this.nic = nic;
             return;
         }
-        System.out.println("Invalid NIC! NIC was not set.");
-
+        throw new Exception("Invalid NIC! NIC should be 10 or 12 characters long");
     }
 
     // check if name consists of a certain pattern using regex
