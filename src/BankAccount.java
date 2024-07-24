@@ -1,3 +1,5 @@
+import BankExceptions.TransactionException;
+
 import java.util.Objects;
 
 public class BankAccount {
@@ -37,7 +39,15 @@ public class BankAccount {
         return this.balance;
     }
 
-    public void setAccountType(String accountType) throws Exception{
+    public void withdraw(float amount) throws TransactionException {
+        if (amount < this.balance){
+            this.balance = this.balance - amount;
+            return;
+        }
+        throw new TransactionException("Insufficient Balance");
+    }
+
+    public void setAccountType(String accountType) throws TransactionException{
         if (Objects.equals(accountType, "sa")){
             this.accountType = "Savings account";
             return;
@@ -45,7 +55,7 @@ public class BankAccount {
             this.accountType = "Fixed Deposit";
             return;
         }
-        throw new Exception("Invalid Account Type: " + accountType);
+        throw new TransactionException("Invalid Account Type: " + accountType);
     }
 
     public String getAccountType(){
