@@ -1,7 +1,5 @@
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-
 import static java.util.Map.entry;
 
 public class Main {
@@ -27,14 +25,18 @@ public class Main {
 //        Scanner scanner = new Scanner(System.in);
 //        String fullName = scanner.nextLine();
 //        System.out.println(fullName);
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 2023);
-        calendar.set(Calendar.MONTH, Calendar.FEBRUARY);
-        calendar.set(Calendar.DAY_OF_MONTH, 5);
-        Date date = calendar.getTime();
-        System.out.println(date);
-//        SimpleDateFormat sd = new SimpleDateFormat("MM/dd/yyyy");
-//        Date simpleDate = sd.parse(calendar.getTime().toString());
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.YEAR, 2023);
+//        calendar.set(Calendar.MONTH, Calendar.FEBRUARY);
+//        calendar.set(Calendar.DAY_OF_MONTH, 5);
+//        Date date = calendar.getTime();
+//        System.out.println(date);
 
+
+
+
+
+
+//        System.out.printf("%s/%s/%s, %s:%s:%s",year,month,day,hour,minute,second);
     }
 }

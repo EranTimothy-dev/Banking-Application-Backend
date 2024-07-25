@@ -1,3 +1,5 @@
+import BankExceptions.InvalidFormatException;
+
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +19,7 @@ public class AccountHolder {
         if (isValidName(name)) {
             this.name = name;
         }
-        throw new Exception("Invalid name entered! name has characters that are not letters.");
+        throw new InvalidFormatException("Invalid name entered! name has characters that are not letters.");
     }
 
     public String getName(){
@@ -38,6 +40,10 @@ public class AccountHolder {
             return;
         }
         throw new Exception("Invalid NIC! NIC should be 10 or 12 characters long");
+    }
+
+    public String getNic(){
+        return this.nic;
     }
 
     // check if name consists of a certain pattern using regex
