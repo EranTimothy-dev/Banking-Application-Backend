@@ -4,19 +4,17 @@ import Users.AccountHolder;
 
 import java.util.*;
 
-public class BankAccount {
+public abstract class BankAccount {
     private AccountHolder user;
     private String accountNumber;
     private double balance;
-    private String accountType;
     HashMap<Date, String> Transactions = new HashMap<>();
 
 
-    public BankAccount(AccountHolder user, String accountNumber, double balance, String accountType){
+    public BankAccount(AccountHolder user, String accountNumber, double balance){
         this.user = user;
         this. accountNumber = accountNumber;
         this.balance = balance;
-        this.accountType = accountType;
     }
 
     public void setUser(AccountHolder user){
@@ -64,38 +62,6 @@ public class BankAccount {
         throw new TransactionException();
     }
 
-    public void setAccountType(String accountType) throws TransactionException{
-        if (Objects.equals(accountType, "sa")){
-            this.accountType = "Savings account";
-            return;
-        } else if (Objects.equals(accountType, "FD")){
-            this.accountType = "Fixed Deposit";
-            return;
-        }
-        throw new TransactionException("Invalid Account Type: " + accountType);
-    }
-
-    public String getAccountType(){
-        return this.accountType;
-    }
-
-    public double getReturnOnInvestment(int timePeriod){
-        if (Objects.equals(this.accountType, "sa")){
-            double interest = ((this.balance * 2)/100)* timePeriod;
-            return this.balance + interest;
-        } else {
-            if (timePeriod < 2){
-                double interest = (((this.balance * 12.5)/100)* timePeriod);
-                return this.balance + interest;
-            } else if (timePeriod < 5) {
-                double interest = (((this.balance * 16.5)/100)*timePeriod);
-                return this.balance + interest;
-            }
-            double interest = (((this.balance * 20)/100)*timePeriod);
-            return this.balance + interest;
-        }
-
-    }
 
     public void retrieveTransactions(){
         for (Map.Entry<Date,String> history: Transactions.entrySet()){
@@ -104,4 +70,5 @@ public class BankAccount {
     }
 
 
+    public abstract double getReturnOnInvestment(int timePeriod);
 }
