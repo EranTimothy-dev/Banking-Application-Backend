@@ -1,3 +1,5 @@
+import Users.AccountHolder;
+
 import java.text.ParseException;
 import java.util.*;
 import static java.util.Map.entry;
@@ -38,7 +40,7 @@ public class Main {
         Date date = Calendar.getInstance().getTime();
 //        System.out.println(date);
         AccountHolder Eran = new AccountHolder("Eran Timothy Perera", date,"200311500596");
-        System.out.println(Eran.name + " " + Eran.nic);
+        System.out.println(Eran.getName() + " " + Eran.getNic());
 
 
 

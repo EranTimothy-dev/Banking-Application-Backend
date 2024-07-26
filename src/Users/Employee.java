@@ -1,4 +1,7 @@
+package Users;
+
 import BankExceptions.SalaryException;
+
 import java.util.Date;
 
 public class Employee extends Person {
