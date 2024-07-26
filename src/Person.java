@@ -8,11 +8,20 @@ public class Person {
     protected String name;
     protected Date birthdate;
     protected String nic;
+    protected double roughIncome = 0;
 
     public Person(String fullName, Date birthdate, String nic){
         this.name = fullName;
         this.birthdate = birthdate;
         this.nic = nic;
+    }
+
+    public void setRoughIncome(double income){
+        this.roughIncome = income;
+    }
+
+    public double getRoughIncome(){
+        return this.roughIncome;
     }
 
     public void setName(String name) throws Exception{
