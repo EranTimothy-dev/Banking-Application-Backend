@@ -31,6 +31,14 @@ public class Main {
 //        calendar.set(Calendar.DAY_OF_MONTH, 5);
 //        Date date = calendar.getTime();
 //        System.out.println(date);
+        final Calendar cal = Calendar.getInstance();
+//        int year = cal.get(Calendar.YEAR);
+//        int month = cal.get(Calendar.MONTH);
+//        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Date date = Calendar.getInstance().getTime();
+//        System.out.println(date);
+        AccountHolder Eran = new AccountHolder("Eran Timothy Perera", date,"200311500596");
+        System.out.println(Eran.name + " " + Eran.nic);
 
 
 

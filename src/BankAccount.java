@@ -1,17 +1,13 @@
 import BankExceptions.TransactionException;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class BankAccount {
     private AccountHolder user;
     private String accountNumber;
     private double balance;
     private String accountType;
-    final Calendar cal = Calendar.getInstance();
-    HashMap<String, ArrayList<String>> Transactions = new HashMap<>();
+    HashMap<Date, String> Transactions = new HashMap<>();
 
 
     public BankAccount(AccountHolder user, String accountNumber, double balance, String accountType){
@@ -48,14 +44,8 @@ public class BankAccount {
     public void withdraw(float amount) throws TransactionException {
         if (amount < this.balance){
             this.balance = this.balance - amount;
-            String transactionDate = generateCurrentDate();
-            if (Transactions.containsKey(transactionDate)){
-                Transactions.get(transactionDate).add(String.format("-%s",amount));
-                return;
-            }
-            ArrayList<String> transaction = new ArrayList<>();
-            transaction.add(String.format("-%s",amount));
-            Transactions.put(transactionDate, transaction);
+            Date date = Calendar.getInstance().getTime();
+            Transactions.put(date, String.format("-%s",amount));
             return;
 
         }
@@ -65,14 +55,8 @@ public class BankAccount {
     public void deposit(float amount) throws TransactionException{
         if (amount > 0){
             this.balance = this.balance + amount;
-            String transactionDate = generateCurrentDate();
-            if (Transactions.containsKey(transactionDate)){
-                Transactions.get(transactionDate).add(String.format("+%s",amount));
-                return;
-            }
-            ArrayList<String> transaction = new ArrayList<>();
-            transaction.add(String.format("+%s",amount));
-            Transactions.put(transactionDate, transaction);
+            Date date = Calendar.getInstance().getTime();
+            Transactions.put(date, String.format("+%s",amount));
             return;
         }
         throw new TransactionException();
@@ -99,7 +83,7 @@ public class BankAccount {
             return this.balance + interest;
         } else {
             if (timePeriod < 2){
-                double interest = (((this.balance * 12.5)/100)* timePeriod); // cast to double output to float
+                double interest = (((this.balance * 12.5)/100)* timePeriod);
                 return this.balance + interest;
             } else if (timePeriod < 5) {
                 double interest = (((this.balance * 16.5)/100)*timePeriod);
@@ -111,15 +95,11 @@ public class BankAccount {
 
     }
 
-    public String generateCurrentDate(){
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return String.format("%s.%s.%s", year,month,day);
+    public void retrieveTransactions(){
+        for (Map.Entry<Date,String> history: Transactions.entrySet()){
+            System.out.println(history.getKey() + ": " + history.getValue());
+        }
     }
-
-
-
 
 
 }
