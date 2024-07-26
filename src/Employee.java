@@ -1,5 +1,4 @@
 import BankExceptions.SalaryException;
-
 import java.util.Date;
 
 public class Employee extends Person {
@@ -30,6 +29,13 @@ public class Employee extends Person {
 
     public String getPosition(){
         return this.position;
+    }
+
+    @Override
+    public void setRoughIncome(double income){
+        // Add bonus to the income based on salary
+        double bonus = (income * 20)/100;
+        this.roughIncome = income + bonus;
     }
 
 }

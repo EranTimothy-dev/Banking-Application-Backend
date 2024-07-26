@@ -63,4 +63,15 @@ public class Person {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches(); // check if the name matched the pattern
     }
+
+    public static double calculateTax(double salary){
+        if (salary < 100000){
+            return 0;
+        } else if (salary < 200000) {
+            return (salary * 13)/100;
+        } else if (salary < 400000) {
+            return (salary * 15)/100;
+        }
+        return (salary * 20)/100;
+    }
 }
