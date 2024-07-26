@@ -70,5 +70,4 @@ public abstract class BankAccount {
     }
 
 
-    public abstract double getReturnOnInvestment(int timePeriod);
 }

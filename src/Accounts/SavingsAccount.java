@@ -8,7 +8,6 @@ public class SavingsAccount extends BankAccount{
         super(user, accountNumber, balance);
     }
 
-    @Override
     public double getReturnOnInvestment(int timePeriod){
         double interest = ((this.getBalance() * 2)/100)* timePeriod;
         return this.getBalance() + interest;
